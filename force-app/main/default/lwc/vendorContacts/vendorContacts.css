@@ -1,0 +1,111 @@
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 1rem;
+}
+
+.card {
+    background: linear-gradient(155deg, #9cac98, #f5f5dc);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.project-details-box {
+    background: #f4f6f9;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    max-width: 300px;
+}
+
+.project-field {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+}
+
+.value {
+    color: #555;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.next-btn,
+.prev-btn,
+.send-btn {
+    background-color: #f5f5dc;
+    color: #2c3e50;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.next-btn:hover,
+.prev-btn:hover,
+.send-btn:hover {
+    background-color: #A8B4A5;
+    color: #ffffff;
+}
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+}
+
+.opportunity-details p {
+    margin: 0.25rem 0;
+}
+
+.button-right {
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.Arrows{
+    background:#ffffff;
+
+    border:none;
+    border-radius: 5px;
+    
+}
+
+.page-info {
+    font-weight: bold;
+}

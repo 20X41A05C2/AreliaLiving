@@ -1,0 +1,87 @@
+    <template>
+        <div class="container">
+            <template if:true={isStepOne}>
+                <div class="card">
+                    <h1>Select an Project</h1>
+
+                    <lightning-combobox label="Projects" value={selectedProjectId}
+                        placeholder="Select an Project" options={projectOptions} onchange={handleProjectChange}>
+                    </lightning-combobox>
+
+                    <template if:true={selectedProject}>
+                        <div class="project-details-box">
+                            <div class="project-field">
+                                <span class="label">Start Date:</span>
+                                <span class="value">{selectedProject.Start_Date__c}</span>
+                            </div>
+                            <div class="project-field">
+                                <span class="label">Close Date:</span>
+                                <span class="value">{selectedProject.End_Date__c}</span>
+                            </div>
+                            <div class="project-field">
+                                <span class="label">Amount:</span>
+                                <span class="value">{selectedProject.Budget__c}</span>
+                            </div>
+                            <div class="project-field">
+                                <span class="label">Supervisor:</span>
+                                <span class="value">{selectedProject.Supervisor__c}</span>
+                            </div>
+                            <div class="project-field">
+                                <span class="label">Lead:</span>
+                                <span class="value">{selectedProject.Client__c}</span>
+                            </div>
+                        </div>
+                    </template>
+
+                    <div class="button-group" style="justify-content: flex-end;">
+                        <button onclick={goToStepTwo} class="next-btn" disabled={disableNext}>Next</button>
+                    </div>
+                </div>
+            </template>
+
+            <template if:false={isStepOne}>
+                <div class="card">
+                    <h1>Select Vendors</h1>
+                    <div>
+                        <lightning-combobox label="Vendor Category" value={selectedCategory} options={categoryOptions}
+                            placeholder="Select a category" onchange={handleCategoryChange}>
+                        </lightning-combobox>
+                    </div> &nbsp;
+
+                    <div>
+                        <template if:true={paginatedVendors.length}>
+                            <lightning-datatable key-field="Id" data={paginatedVendors} columns={columns}
+                                selected-rows={selectedVendorIds} onrowselection={handleRowSelection}>
+                            </lightning-datatable>
+
+                            <div class="pagination-controls"
+                                style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem;">
+                                <lightning-button-icon icon-name="utility:chevronleft" alternative-text="Previous"
+                                    onclick={handlePrevPage} disabled={isFirstPage} class="Arrows">
+                                </lightning-button-icon>
+
+                                <span> {currentPage} of {totalPages}</span>
+
+                                <lightning-button-icon icon-name="utility:chevronright" alternative-text="Next"
+                                    onclick={handleNextPage} disabled={isLastPage} class="Arrows">
+                                </lightning-button-icon>
+
+                            </div>
+
+                            <div class="button-group" style="margin-top: 1rem;">
+                                <button onclick={goToStepOne} class="prev-btn">Previous</button>
+                                <button onclick={handleSendEmail} class="send-btn">Send Email to Selected Vendors</button>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div>
+                        <template if:false={paginatedVendors.length}>
+                            <p>No vendors found for this category.</p>
+                        </template>
+                    </div>
+
+                </div>
+            </template>
+        </div>
+    </template>

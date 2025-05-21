@@ -1,0 +1,52 @@
+<template>
+  <div class="card-container">
+    <template if:true={properties}>
+      <template for:each={properties} for:item="prop">
+        <div key={prop.id} class="property-card">
+          <img src={prop.imageUrl} alt={prop.name} class="property-image" />
+          <div class="card-content">
+            <h2>{prop.name}</h2>
+            <p class="price">₹{prop.price}</p>
+            <button class="slds-button slds-button_brand" data-id={prop.id} data-name={prop.name} onclick={openModal}>
+              Add Contact Interested
+            </button>
+          </div>
+        </div>
+      </template>
+    </template>
+    <template if:true={error}>
+      <p class="error">Error loading properties: {error}</p>
+    </template>
+  </div>
+
+  <!-- Modal -->
+  <template if:true={showModal}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <h2 class="slds-modal__title">Add Interested Contact</h2>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium">
+          <lightning-combobox
+            name="contact"
+            label="Interested Contact"
+            placeholder="Select Contact"
+            options={contactOptions}
+            onchange={handleContactChange}
+          ></lightning-combobox>
+
+          <lightning-input
+            label="Property Name"
+            value={selectedPropertyName}
+            disabled
+          ></lightning-input>
+        </div>
+        <footer class="slds-modal__footer">
+          <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+          <button class="slds-button slds-button_brand" onclick={saveContact}>Save</button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>
